@@ -4,386 +4,749 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projector & Conference Camera User Guide</title>
+    
+    <!-- Google Fonts - Gen Z Favorites -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* ============================================
+           🎨 TREND 2026 + GEN Z DESIGN SYSTEM
+           ============================================ */
+        
         /* CSS Reset */
-        * {
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Variabel Warna - TRAKINDO CAT THEME */
+        /* ============================================
+           🎨 CSS VARIABLES - NEO-BRUTALISM + GLASSMORPHISM
+           ============================================ */
         :root {
-            --primary: #F4A300;              /* Kuning-oranye Trakindo */
-            --primary-dark: #C07F00;         /* Kuning lebih gelap */
-            --primary-black: #000000;        /* Hitam CAT */
-            --secondary: #F4A300;
-            --success: #66BB6A;
-            --warning: #F4A300;
-            --error: #EF5350;
-            --bg-light: #FFF8E7;            /* Background krem lembut */
-            --bg-white: #FFFFFF;
-            --text-dark: #000000;           /* Teks hitam Trakindo */
-            --text-light: #333333;
-            --text-muted: #666666;
-            --border: #E0E0E0;
-            --shadow: rgba(244, 163, 0, 0.15);
-            --glass-bg: rgba(255, 255, 255, 0.9);
-            --glass-border: rgba(244, 163, 0, 0.3);
+            /* Primary Colors - Trakindo dengan sentuhan Gen Z */
+            --primary: #F4A300;
+            --primary-dark: #C07F00;
+            --primary-light: #FFD166;
+            --primary-glow: rgba(244, 163, 0, 0.4);
+            
+            /* Gen Z Accent Colors - Vibrant & Bold */
+            --accent-purple: #8B5CF6;
+            --accent-pink: #EC4899;
+            --accent-cyan: #06B6D4;
+            --accent-lime: #84CC16;
+            --accent-orange: #F97316;
+            
+            /* Neutrals */
+            --black: #0A0A0A;
+            --white: #FFFFFF;
+            --gray-50: #FAFAFA;
+            --gray-100: #F4F4F5;
+            --gray-200: #E4E4E7;
+            --gray-300: #D4D4D8;
+            --gray-400: #A1A1AA;
+            --gray-500: #71717A;
+            --gray-600: #52525B;
+            --gray-700: #3F3F46;
+            --gray-800: #27272A;
+            --gray-900: #18181B;
+            
+            /* Backgrounds */
+            --bg-primary: #FFFBF0;
+            --bg-secondary: var(--white);
+            --bg-card: var(--white);
+            --bg-elevated: var(--white);
+            
+            /* Text */
+            --text-primary: var(--black);
+            --text-secondary: var(--gray-600);
+            --text-muted: var(--gray-400);
+            
+            /* Borders & Shadows */
+            --border-color: var(--gray-200);
+            --border-bold: var(--black);
+            
+            /* Neo-Brutalism Shadows */
+            --shadow-brutal: 4px 4px 0px var(--black);
+            --shadow-brutal-lg: 8px 8px 0px var(--black);
+            --shadow-brutal-primary: 4px 4px 0px var(--primary-dark);
+            --shadow-brutal-hover: 6px 6px 0px var(--black);
+            
+            /* Glassmorphism */
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --glass-blur: blur(20px);
+            
+            /* Gradients - Gen Z Style */
+            --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--accent-orange) 100%);
+            --gradient-purple: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-pink) 100%);
+            --gradient-cyber: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-purple) 100%);
+            --gradient-mesh: 
+                radial-gradient(at 40% 20%, var(--primary-light) 0px, transparent 50%),
+                radial-gradient(at 80% 0%, var(--accent-cyan) 0px, transparent 50%),
+                radial-gradient(at 0% 50%, var(--accent-purple) 0px, transparent 50%),
+                radial-gradient(at 80% 50%, var(--accent-pink) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, var(--primary) 0px, transparent 50%);
+            
+            /* Spacing */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            --space-3xl: 4rem;
+            
+            /* Border Radius - Trend 2026: Mix of sharp & rounded */
+            --radius-none: 0;
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-2xl: 32px;
+            --radius-full: 9999px;
+            --radius-blob: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            
+            /* Transitions */
+            --transition-fast: 150ms ease;
+            --transition-base: 250ms ease;
+            --transition-slow: 350ms ease;
+            --transition-bounce: 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            
+            /* Typography */
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            
+            /* Z-index */
+            --z-dropdown: 100;
+            --z-sticky: 200;
+            --z-modal: 300;
+            --z-tooltip: 400;
         }
 
-        /* Mode Gelap */
+        /* ============================================
+           🌙 DARK MODE - Cyberpunk Vibes
+           ============================================ */
         [data-theme="dark"] {
-            --bg-light: #1a1a1a;
-            --bg-white: #2a2a2a;
-            --text-dark: #F4A300;
-            --text-light: #E0E0E0;
-            --text-muted: #9E9E9E;
-            --border: #424242;
-            --shadow: rgba(244, 163, 0, 0.3);
-            --glass-bg: rgba(42, 42, 42, 0.9);
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #141414;
+            --bg-card: #1A1A1A;
+            --bg-elevated: #242424;
+            
+            --text-primary: #FAFAFA;
+            --text-secondary: #A1A1AA;
+            --text-muted: #71717A;
+            
+            --border-color: #27272A;
+            --border-bold: var(--primary);
+            
+            --shadow-brutal: 4px 4px 0px var(--primary);
+            --shadow-brutal-lg: 8px 8px 0px var(--primary);
+            --shadow-brutal-primary: 4px 4px 0px var(--accent-purple);
+            --shadow-brutal-hover: 6px 6px 0px var(--primary);
+            
+            --glass-bg: rgba(26, 26, 26, 0.8);
             --glass-border: rgba(244, 163, 0, 0.2);
         }
 
-        /* Gaya Dasar Body */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: var(--bg-light);
-            color: var(--text-light);
-            line-height: 1.6;
-            transition: background 0.3s ease, color 0.3s ease;
+        /* ============================================
+           📱 BASE STYLES
+           ============================================ */
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Header yang Diperbaiki - TRAKINDO STYLE */
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            transition: background var(--transition-base), color var(--transition-base);
+            overflow-x: hidden;
+        }
+
+        /* Animated Background Mesh - Gen Z Trend */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-mesh);
+            opacity: 0.15;
+            z-index: -1;
+            animation: meshMove 20s ease-in-out infinite;
+        }
+
+        @keyframes meshMove {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(-5%, 5%) scale(1.1); }
+            50% { transform: translate(5%, -5%) scale(1); }
+            75% { transform: translate(-3%, -3%) scale(1.05); }
+        }
+
+        /* ============================================
+           🎯 HEADER - Neo-Brutalism + Glassmorphism
+           ============================================ */
         .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: var(--primary-black);
-            padding-top: 1.5rem;
-            padding-bottom: 1rem;
-            box-shadow: 0 4px 20px var(--shadow);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: var(--z-sticky);
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-bottom: 3px solid var(--border-bold);
+            padding: var(--space-lg) 0;
         }
 
         .header-main-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 var(--space-xl);
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: var(--space-lg);
             flex-wrap: wrap;
-            gap: 1rem;
         }
 
         .logo-section {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: var(--space-lg);
         }
 
+        /* Logo - Neo-Brutalism Style */
         .logo {
-            width: 50px;
-            height: 50px;
-            background: white;
-            border-radius: 12px;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border: 3px solid var(--black);
+            border-radius: var(--radius-lg);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            flex-shrink: 0;
+            box-shadow: var(--shadow-brutal);
+            transition: all var(--transition-bounce);
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .logo:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: var(--shadow-brutal-hover);
+        }
+
+        .logo:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px var(--black);
+        }
+
+        .logo img {
+            width: 40px;
+            height: auto;
         }
 
         .title-section h1 {
-            font-size: 1.5rem;
+            font-family: var(--font-display);
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
             font-weight: 700;
-            margin-bottom: 0.2rem;
-            color: var(--primary-black);
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.3);
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        /* Gradient Text - Gen Z Favorite */
+        .title-section h1 span {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .title-section p {
-            font-size: 0.9rem;
-            opacity: 0.95;
-            color: var(--primary-black);
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+        }
+
+        /* Status Badge - Trendy */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-xs) var(--space-sm);
+            background: var(--accent-lime);
+            color: var(--black);
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-radius: var(--radius-full);
+            border: 2px solid var(--black);
+            margin-top: var(--space-sm);
+        }
+
+        .status-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--black);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
         }
 
         .header-controls {
             display: flex;
-            gap: 1rem;
+            gap: var(--space-md);
             align-items: center;
         }
 
-        .theme-toggle {
-            background: var(--primary-black);
-            border: 2px solid rgba(255,255,255,0.3);
-            color: var(--primary);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .theme-toggle:hover {
-            background: rgba(0,0,0,0.8);
-            transform: rotate(180deg);
-            border-color: white;
-        }
-
+        /* Search Box - Neo-Brutalism */
         .search-box {
             position: relative;
-            width: 250px;
+            width: 280px;
         }
 
         .search-box input {
             width: 100%;
-            padding: 0.6rem 1rem 0.6rem 2.5rem;
-            border: 2px solid var(--primary-black);
-            border-radius: 25px;
-            background: rgba(255,255,255,0.95);
-            color: var(--primary-black);
+            padding: var(--space-md) var(--space-lg);
+            padding-left: 3rem;
+            border: 3px solid var(--border-bold);
+            border-radius: var(--radius-lg);
+            background: var(--bg-card);
+            color: var(--text-primary);
             font-size: 0.9rem;
-            transition: all 0.3s ease;
+            font-family: var(--font-body);
+            box-shadow: var(--shadow-brutal);
+            transition: all var(--transition-base);
         }
 
         .search-box input::placeholder {
-            color: rgba(0,0,0,0.5);
+            color: var(--text-muted);
         }
 
         .search-box input:focus {
             outline: none;
-            background: white;
-            border-color: var(--primary-black);
-            box-shadow: 0 0 0 3px rgba(244,163,0,0.2);
+            transform: translate(-2px, -2px);
+            box-shadow: var(--shadow-brutal-hover);
+            border-color: var(--primary);
         }
 
         .search-icon {
             position: absolute;
-            left: 1rem;
+            left: var(--space-md);
             top: 50%;
             transform: translateY(-50%);
-            opacity: 0.6;
+            font-size: 1.1rem;
+            pointer-events: none;
         }
 
-        /* Navigasi yang Diperbaiki - TRAKINDO STYLE */
+        /* Keyboard Shortcut Hint */
+        .search-hint {
+            position: absolute;
+            right: var(--space-md);
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 2px;
+            pointer-events: none;
+        }
+
+        .key-hint {
+            padding: 2px 6px;
+            background: var(--gray-100);
+            border: 1px solid var(--gray-300);
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--gray-500);
+            font-family: monospace;
+        }
+
+        [data-theme="dark"] .key-hint {
+            background: var(--gray-800);
+            border-color: var(--gray-700);
+            color: var(--gray-400);
+        }
+
+        /* Theme Toggle - Animated */
+        .theme-toggle {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--border-bold);
+            border-radius: var(--radius-lg);
+            background: var(--bg-card);
+            cursor: pointer;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-brutal);
+            transition: all var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-toggle:hover {
+            transform: translate(-2px, -2px) rotate(-10deg);
+            box-shadow: var(--shadow-brutal-hover);
+        }
+
+        .theme-toggle:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px var(--border-bold);
+        }
+
+        /* ============================================
+           🧭 NAVIGATION - Pill Style + Glow Effect
+           ============================================ */
         .nav-container {
-            max-width: 1200px;
-            margin: 1.5rem auto 0;
-            padding: 0 1.5rem;
+            max-width: 1400px;
+            margin: var(--space-lg) auto 0;
+            padding: 0 var(--space-xl);
         }
 
         .nav-tabs {
             display: flex;
-            gap: 0.5rem;
-            background: var(--glass-bg);
-            padding: 0.5rem;
-            border-radius: 14px;
-            box-shadow: 0 8px 32px var(--shadow);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 2px solid var(--primary);
+            gap: var(--space-sm);
+            padding: var(--space-sm);
+            background: var(--bg-card);
+            border: 3px solid var(--border-bold);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-brutal);
             overflow-x: auto;
             scrollbar-width: none;
         }
+
         .nav-tabs::-webkit-scrollbar {
             display: none;
         }
 
         .nav-tab {
             flex-shrink: 0;
-            padding: 0.8rem 1.2rem;
-            border: none;
+            padding: var(--space-md) var(--space-lg);
+            border: 2px solid transparent;
             background: transparent;
-            color: var(--text-light);
-            border-radius: 10px;
+            color: var(--text-secondary);
+            border-radius: var(--radius-lg);
             cursor: pointer;
             font-size: 0.9rem;
             font-weight: 600;
-            transition: all 0.3s ease;
+            font-family: var(--font-body);
+            transition: all var(--transition-base);
             white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
         }
 
         .nav-tab:hover {
-            background: rgba(244, 163, 0, 0.15);
-            color: var(--primary-dark);
+            background: var(--gray-100);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        [data-theme="dark"] .nav-tab:hover {
+            background: var(--gray-800);
         }
 
         .nav-tab.active {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: var(--primary-black);
-            box-shadow: 0 4px 12px rgba(244, 163, 0, 0.4);
-            font-weight: 700;
+            background: var(--gradient-primary);
+            color: var(--black);
+            border-color: var(--black);
+            box-shadow: var(--shadow-brutal-primary);
+            transform: translateY(-2px);
         }
 
-        /* Konten Utama */
+        .nav-tab-icon {
+            font-size: 1.1rem;
+        }
+
+        /* ============================================
+           📦 MAIN CONTENT
+           ============================================ */
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: var(--space-2xl) var(--space-xl);
         }
 
         .page {
             display: none;
-            animation: fadeIn 0.5s ease;
+            animation: pageIn 0.5s ease-out;
         }
 
         .page.active {
             display: block;
         }
 
-        @keyframes fadeIn {
+        @keyframes pageIn {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px) scale(0.98);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
             }
         }
 
-        /* Kartu */
+        /* ============================================
+           🃏 CARDS - Neo-Brutalism
+           ============================================ */
         .card {
-            background: var(--bg-white);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 20px var(--shadow);
-            border: 2px solid var(--primary);
-            transition: all 0.3s ease;
+            background: var(--bg-card);
+            border: 3px solid var(--border-bold);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-brutal);
+            transition: all var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
         }
 
         .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 30px var(--shadow);
-            border-color: var(--primary-dark);
+            transform: translate(-4px, -4px);
+            box-shadow: var(--shadow-brutal-lg);
         }
 
         .card-header {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 3px solid var(--primary);
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+            padding-bottom: var(--space-lg);
+            border-bottom: 2px dashed var(--border-color);
         }
 
         .card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border: 3px solid var(--black);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            box-shadow: var(--shadow-brutal);
+            flex-shrink: 0;
+        }
+
+        .card-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        /* ============================================
+           🎰 BENTO GRID - 2026 Trend
+           ============================================ */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+
+        .bento-card {
+            background: var(--bg-card);
+            border: 3px solid var(--border-bold);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl);
+            transition: all var(--transition-bounce);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bento-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity var(--transition-base);
+            z-index: 0;
+        }
+
+        .bento-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .bento-card:hover {
+            transform: translate(-6px, -6px) rotate(-1deg);
+            box-shadow: var(--shadow-brutal-lg);
+        }
+
+        .bento-card:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px var(--border-bold);
+        }
+
+        .bento-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .bento-icon {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: 12px;
+            background: var(--gradient-primary);
+            border: 2px solid var(--black);
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            color: var(--primary-black);
-            flex-shrink: 0;
-            box-shadow: 0 4px 12px rgba(244,163,0,0.3);
+            margin-bottom: var(--space-md);
+            box-shadow: 3px 3px 0px var(--black);
         }
 
-        .card-title {
-            font-size: 1.5rem;
+        .bento-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
             font-weight: 700;
-            color: var(--text-dark);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .feature-card {
-            background: var(--bg-white);
-            border-radius: 12px;
-            padding: 1.5rem;
-            border-left: 5px solid var(--primary);
-            border: 2px solid var(--primary);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .feature-card:hover {
-            transform: translateX(8px);
-            box-shadow: 0 4px 20px var(--shadow);
-            border-left-width: 8px;
-            background: linear-gradient(to right, rgba(244,163,0,0.05), white);
-        }
-
-        .feature-card h3 {
-            color: var(--text-dark);
-            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-weight: 700;
+            gap: var(--space-sm);
         }
 
-        .feature-card ul {
+        .bento-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .bento-card ul {
             list-style: none;
-            padding-left: 0;
         }
 
-        .feature-card li {
-            padding: 0.3rem 0;
-            color: var(--text-light);
+        .bento-card li {
+            padding: var(--space-xs) 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            font-size: 0.9rem;
         }
 
-        .feature-card li:before {
-            content: "✓ ";
+        .bento-card li::before {
+            content: '→';
             color: var(--primary);
             font-weight: bold;
-            margin-right: 0.5rem;
-            font-size: 1.2rem;
         }
 
-        /* Accordion */
-        .accordion {
-            margin-bottom: 1rem;
+        /* Feature Tags */
+        .feature-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-xs) var(--space-sm);
+            background: var(--primary-light);
+            color: var(--black);
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-radius: var(--radius-sm);
+            border: 2px solid var(--black);
+            margin-right: var(--space-xs);
+            margin-bottom: var(--space-xs);
         }
-        .accordion:last-child {
-            margin-bottom: 0;
+
+        .feature-tag.purple {
+            background: var(--accent-purple);
+            color: var(--white);
+        }
+
+        .feature-tag.cyan {
+            background: var(--accent-cyan);
+            color: var(--black);
+        }
+
+        .feature-tag.pink {
+            background: var(--accent-pink);
+            color: var(--white);
+        }
+
+        /* ============================================
+           🪗 ACCORDION - Modern Style
+           ============================================ */
+        .accordion {
+            margin-bottom: var(--space-md);
         }
 
         .accordion-header {
-            background: var(--bg-white);
-            padding: 1.2rem 1.5rem;
-            border-radius: 12px;
+            width: 100%;
+            padding: var(--space-lg);
+            background: var(--bg-card);
+            border: 3px solid var(--border-bold);
+            border-radius: var(--radius-lg);
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: space-between;
             font-weight: 600;
-            color: var(--text-dark);
-            transition: all 0.3s ease;
-            border: 2px solid var(--primary);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--text-primary);
+            transition: all var(--transition-base);
+            box-shadow: var(--shadow-brutal);
+            text-align: left;
         }
 
         .accordion-header:hover {
-            background: rgba(244, 163, 0, 0.1);
-            border-color: var(--primary-dark);
+            transform: translate(-2px, -2px);
+            box-shadow: var(--shadow-brutal-hover);
+            background: var(--gray-50);
+        }
+
+        [data-theme="dark"] .accordion-header:hover {
+            background: var(--gray-800);
         }
 
         .accordion-header.active {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: var(--primary-black);
-            border-radius: 12px 12px 0 0;
-            font-weight: 700;
+            background: var(--gradient-primary);
+            color: var(--black);
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            transform: translate(-2px, -2px);
+            box-shadow: var(--shadow-brutal-hover);
         }
 
         .accordion-icon {
             font-size: 1.2rem;
-            transition: transform 0.3s ease;
+            transition: transform var(--transition-bounce);
         }
 
         .accordion-header.active .accordion-icon {
@@ -394,287 +757,651 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.5s ease-out;
-            background: var(--bg-white);
-            border-radius: 0 0 12px 12px;
+            background: var(--bg-card);
+            border: 3px solid var(--border-bold);
+            border-top: none;
+            border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+            margin-top: -3px;
         }
-        
+
         .accordion-header.active + .accordion-content {
-             max-height: 2000px;
-             border: 2px solid var(--primary);
-             border-top: none;
+            max-height: 3000px;
         }
 
         .accordion-body {
-            padding: 1.5rem;
+            padding: var(--space-xl);
         }
 
-        /* Steps */
+        /* ============================================
+           📍 STEPS - Timeline Style
+           ============================================ */
         .steps {
             counter-reset: step;
+            position: relative;
+            padding-left: var(--space-lg);
+        }
+
+        .steps::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
         }
 
         .step {
             position: relative;
-            padding-left: 3rem;
-            margin-bottom: 2rem;
+            padding-left: var(--space-2xl);
+            margin-bottom: var(--space-xl);
             counter-increment: step;
         }
+
         .step:last-child {
             margin-bottom: 0;
         }
 
-        .step:before {
+        .step::before {
             content: counter(step);
             position: absolute;
             left: 0;
             top: 0;
-            width: 2rem;
-            height: 2rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: var(--primary-black);
-            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            background: var(--gradient-primary);
+            border: 3px solid var(--black);
+            color: var(--black);
+            border-radius: var(--radius-full);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            box-shadow: 0 2px 8px rgba(244,163,0,0.4);
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow-brutal);
+            z-index: 1;
         }
 
         .step h4 {
-            color: var(--text-dark);
-            margin-bottom: 0.5rem;
-            font-weight: 700;
+            font-family: var(--font-display);
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+            font-size: 1.1rem;
         }
 
-        /* Alert Boxes - TRAKINDO STYLE */
+        .step p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* ============================================
+           ⚠️ ALERTS - Bold & Clear
+           ============================================ */
         .alert {
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-lg);
             display: flex;
-            align-items: start;
-            gap: 1rem;
+            align-items: flex-start;
+            gap: var(--space-md);
+            border: 3px solid var(--black);
+            box-shadow: var(--shadow-brutal);
         }
 
         .alert-icon {
             font-size: 1.5rem;
             flex-shrink: 0;
-            padding-top: 0.2rem;
         }
 
-        .alert-info { 
-            background: #FFF8E7; 
-            border-left: 5px solid var(--primary); 
-            color: var(--primary-black); 
-            border: 2px solid var(--primary);
-        }
-        .alert-success { 
-            background: #E8F5E9; 
-            border-left: 5px solid #4CAF50; 
-            color: #2E7D32; 
-            border: 2px solid #4CAF50;
-        }
-        .alert-warning { 
-            background: #FFF3E0; 
-            border-left: 5px solid var(--primary-dark); 
-            color: var(--primary-black); 
-            border: 2px solid var(--primary-dark);
-        }
-        .alert-error { 
-            background: #FFEBEE; 
-            border-left: 5px solid #F44336; 
-            color: #C62828; 
-            border: 2px solid #F44336;
+        .alert-content {
+            flex: 1;
         }
 
-        /* Contact Cards */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
+        .alert-content strong {
+            display: block;
+            margin-bottom: var(--space-xs);
+            font-family: var(--font-display);
         }
 
-        .contact-card {
-            background: var(--bg-white);
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 4px 12px var(--shadow);
-            transition: all 0.3s ease;
-            border: 2px solid var(--primary);
-        }
-
-        .contact-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 24px var(--shadow);
+        .alert-info {
+            background: linear-gradient(135deg, #FFF8E7 0%, #FFF3CD 100%);
             border-color: var(--primary-dark);
         }
 
-        .contact-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            margin: 0 auto 1rem;
-            color: var(--primary-black);
-            box-shadow: 0 4px 12px rgba(244,163,0,0.3);
+        .alert-success {
+            background: linear-gradient(135deg, #D4EDDA 0%, #C3E6CB 100%);
+            border-color: #28A745;
         }
 
-        /* Footer - TRAKINDO STYLE */
-        .footer {
-            background: var(--primary-black);
-            padding: 2rem;
-            text-align: center;
-            color: var(--primary);
-            border-top: 4px solid var(--primary);
-            margin-top: 4rem;
+        .alert-warning {
+            background: linear-gradient(135deg, #FFF3CD 0%, #FFE69C 100%);
+            border-color: var(--accent-orange);
         }
-        
-        .footer p {
-            color: #FFFFFF;
+
+        .alert-error {
+            background: linear-gradient(135deg, #F8D7DA 0%, #F5C6CB 100%);
+            border-color: #DC3545;
         }
-        
-        .footer strong {
-            color: var(--primary);
-        }
-        
-        /* GAYA GAMBAR & KONTEN */
+
+        /* ============================================
+           🖼️ IMAGES
+           ============================================ */
         .image-container {
-            margin: 1.5rem 0;
+            margin: var(--space-lg) 0;
             text-align: center;
         }
+
         .guide-image {
             max-width: 100%;
             height: auto;
-            border-radius: 12px;
-            border: 3px solid var(--primary);
-            box-shadow: 0 4px 12px var(--shadow);
+            border-radius: var(--radius-lg);
+            border: 3px solid var(--border-bold);
+            box-shadow: var(--shadow-brutal);
+            transition: all var(--transition-base);
         }
+
+        .guide-image:hover {
+            transform: translate(-4px, -4px) scale(1.02);
+            box-shadow: var(--shadow-brutal-lg);
+        }
+
         .image-caption {
             text-align: center;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
-            margin-top: 0.75rem;
+            margin-top: var(--space-md);
             font-style: italic;
         }
+
         .content-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
+            gap: var(--space-lg);
             align-items: center;
         }
 
-        /* Responsif */
+        /* ============================================
+           📞 CONTACT CARDS
+           ============================================ */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+            margin: var(--space-xl) 0;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            border: 3px solid var(--border-bold);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl);
+            text-align: center;
+            box-shadow: var(--shadow-brutal);
+            transition: all var(--transition-bounce);
+            cursor: pointer;
+        }
+
+        .contact-card:hover {
+            transform: translate(-4px, -4px) rotate(1deg);
+            box-shadow: var(--shadow-brutal-lg);
+        }
+
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-primary);
+            border: 3px solid var(--black);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto var(--space-md);
+            box-shadow: var(--shadow-brutal);
+        }
+
+        .contact-card h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .contact-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* ============================================
+           🦶 FOOTER
+           ============================================ */
+        .footer {
+            background: var(--black);
+            border-top: 4px solid var(--primary);
+            padding: var(--space-2xl);
+            text-align: center;
+            margin-top: var(--space-3xl);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .footer p {
+            color: var(--gray-400);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-lg);
+            margin-top: var(--space-lg);
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .footer-link:hover {
+            color: var(--primary);
+        }
+
+        /* ============================================
+           📱 RESPONSIVE
+           ============================================ */
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
-            .header-main-content, .logo-section {
+            .header-main-content {
                 flex-direction: column;
                 text-align: center;
-                gap: 1rem;
+                gap: var(--space-md);
             }
-            .title-section h1 { font-size: 1.4rem; }
-            .search-box { width: 100%; }
-            .nav-container { padding: 0 1rem; }
-            .container, .card { padding: 1rem; }
-            .grid, .content-grid { grid-template-columns: 1fr; }
+
+            .logo-section {
+                flex-direction: column;
+                gap: var(--space-md);
+            }
+
+            .search-box {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .search-hint {
+                display: none;
+            }
+
+            .nav-container {
+                padding: 0 var(--space-md);
+            }
+
+            .nav-tabs {
+                padding: var(--space-xs);
+                gap: var(--space-xs);
+            }
+
+            .nav-tab {
+                padding: var(--space-sm) var(--space-md);
+                font-size: 0.8rem;
+            }
+
+            .nav-tab-text {
+                display: none;
+            }
+
+            .container {
+                padding: var(--space-lg) var(--space-md);
+            }
+
+            .card, .bento-card {
+                padding: var(--space-lg);
+            }
+
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card-header {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--space-md);
+            }
+
+            .accordion-header {
+                padding: var(--space-md);
+                font-size: 0.9rem;
+            }
+
+            .accordion-body {
+                padding: var(--space-lg);
+            }
+
+            .steps {
+                padding-left: var(--space-sm);
+            }
+
+            .step {
+                padding-left: var(--space-xl);
+            }
         }
 
-        /* Print Styles */
+        /* ============================================
+           🖨️ PRINT STYLES
+           ============================================ */
         @media print {
-            .header, .nav-tabs, .footer, .theme-toggle { display: none; }
-            .page { display: block !important; page-break-after: always; }
-            .card { box-shadow: none; border: 1px solid #ddd; }
+            .header, .nav-tabs, .footer, .theme-toggle {
+                display: none;
+            }
+            
+            .page {
+                display: block !important;
+                page-break-after: always;
+            }
+            
+            .card, .bento-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+
+            body::before {
+                display: none;
+            }
         }
 
-        /* Smooth Scrolling */
-        html { scroll-behavior: smooth; }
+        /* ============================================
+           ✨ SPECIAL EFFECTS - Gen Z Love These
+           ============================================ */
+        
+        /* Cursor Glow Effect */
+        .cursor-glow {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        body:hover .cursor-glow {
+            opacity: 1;
+        }
+
+        /* Selection Color */
+        ::selection {
+            background: var(--primary);
+            color: var(--black);
+        }
+
+        /* Focus Visible */
+        :focus-visible {
+            outline: 3px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        /* Scrollbar - Minimal */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: var(--radius-full);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Loading Skeleton */
+        .skeleton {
+            background: linear-gradient(
+                90deg,
+                var(--gray-200) 25%,
+                var(--gray-100) 50%,
+                var(--gray-200) 75%
+            );
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite;
+            border-radius: var(--radius-md);
+        }
+
+        @keyframes skeleton-loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Marquee Text - Trendy */
+        .marquee {
+            overflow: hidden;
+            white-space: nowrap;
+            padding: var(--space-sm) 0;
+            background: var(--black);
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* Floating Elements */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Glitch Effect - Optional for headings */
+        .glitch {
+            position: relative;
+        }
+
+        .glitch:hover {
+            animation: glitch 0.3s ease;
+        }
+
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
 
     </style>
 </head>
 <body>
+    <!-- Cursor Glow Effect -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Marquee Banner - Optional Trendy Element -->
+    <div class="marquee">
+        <div class="marquee-content">
+            ⚡ WELCOME TO TRAKINDO USER GUIDE • 📺 PROJECTOR SETUP • 📷 KANDAO CAMERA • 🎛️ REMOTE CONTROL • ❓ FAQ & SUPPORT • 
+            ⚡ WELCOME TO TRAKINDO USER GUIDE • 📺 PROJECTOR SETUP • 📷 KANDAO CAMERA • 🎛️ REMOTE CONTROL • ❓ FAQ & SUPPORT • 
+        </div>
+    </div>
+
     <header class="header">
         <div class="header-main-content">
             <div class="logo-section">
-                <div class="logo">
-                    <img src="assets/logo_trakindo.png" alt="Logo Trakindo" style="width: 40px; height: auto;">
+                <div class="logo floating">
+                    <img src="assets/logo_trakindo.png" alt="Logo Trakindo" onerror="this.onerror=null;this.parentElement.innerHTML='🔧'">
                 </div>
                 <div class="title-section">
-                    <h1>Projector & Conference Camera User Guide</h1>
+                    <h1 class="glitch">Projector & Camera <span>User Guide</span></h1>
                     <p>Complete guide to Kandao Meeting Pro projectors and cameras</p>
+                    <div class="status-badge">Live Documentation</div>
                 </div>
             </div>
             <div class="header-controls">
                 <div class="search-box">
                     <span class="search-icon">🔍</span>
-                    <input type="text" id="searchInput" placeholder="Cari troubleshooting...">
+                    <input type="text" id="searchInput" placeholder="Search troubleshooting...">
+                    <div class="search-hint">
+                        <span class="key-hint">⌘</span>
+                        <span class="key-hint">K</span>
+                    </div>
                 </div>
-                <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <span id="themeIcon">🌙</span>
+                </button>
             </div>
         </div>
         <div class="nav-container">
-            <div class="nav-tabs">
-                <button class="nav-tab active" onclick="showPage('home')">🏠 Beranda</button>
-                <button class="nav-tab" onclick="showPage('projector')">📺 Proyektor</button>
-                <button class="nav-tab" onclick="showPage('camera')">📷 Kamera</button>
-                <button class="nav-tab" onclick="showPage('remote')">🎛️ Remote & Fitur</button>
-                <button class="nav-tab" onclick="showPage('faq')">❓ FAQ</button>
-            </div>
+            <nav class="nav-tabs" role="tablist">
+                <button class="nav-tab active" onclick="showPage('home')" role="tab" aria-selected="true">
+                    <span class="nav-tab-icon">🏠</span>
+                    <span class="nav-tab-text">Home</span>
+                </button>
+                <button class="nav-tab" onclick="showPage('projector')" role="tab">
+                    <span class="nav-tab-icon">📺</span>
+                    <span class="nav-tab-text">Projector</span>
+                </button>
+                <button class="nav-tab" onclick="showPage('camera')" role="tab">
+                    <span class="nav-tab-icon">📷</span>
+                    <span class="nav-tab-text">Camera</span>
+                </button>
+                <button class="nav-tab" onclick="showPage('remote')" role="tab">
+                    <span class="nav-tab-icon">🎛️</span>
+                    <span class="nav-tab-text">Remote</span>
+                </button>
+                <button class="nav-tab" onclick="showPage('faq')" role="tab">
+                    <span class="nav-tab-icon">❓</span>
+                    <span class="nav-tab-text">FAQ</span>
+                </button>
+            </nav>
         </div>
     </header>
 
     <main class="container">
         <!-- Home Page -->
         <div id="home" class="page active">
-           <div class="alert alert-info">
-                <span class="alert-icon">📌</span>
-                <div>
-                    <strong>Welcome!</strong><br>
-                    Select a guide from the menu above to get started. Use the icons 🌙/☀️ to change the theme.
+            <div class="alert alert-info">
+                <span class="alert-icon">👋</span>
+                <div class="alert-content">
+                    <strong>Welcome to the Guide!</strong>
+                    Select a topic from the menu above. Use the 🌙/☀️ toggle for dark mode.
                 </div>
             </div>
-            <h2 style="color: var(--text-dark); margin: 2rem 0;">🚀 Akses Cepat</h2>
-            <div class="grid">
-                <div class="feature-card" onclick="showPage('projector', this)">
-                    <h3>📺 Projector Guide</h3>
-                    <p style="margin-bottom: 1rem; color: var(--text-muted);">Learn how to connect a laptop to a projector.</p>
+
+            <h2 style="font-family: var(--font-display); font-size: 1.75rem; margin: var(--space-xl) 0; display: flex; align-items: center; gap: var(--space-sm);">
+                🚀 Quick Access
+                <span class="feature-tag">Popular</span>
+            </h2>
+
+            <div class="bento-grid">
+                <div class="bento-card" onclick="showPage('projector')">
+                    <div class="bento-icon">📺</div>
+                    <h3>Projector Guide</h3>
+                    <p>Learn how to connect your laptop to the projector in minutes.</p>
+                    <div style="margin-bottom: var(--space-md);">
+                        <span class="feature-tag">Quick</span>
+                        <span class="feature-tag cyan">HDMI</span>
+                        <span class="feature-tag purple">Wireless</span>
+                    </div>
                     <ul>
-                        <li>Shortcut Windows + K</li>
-                        <li>Cable HDMI/VGA</li>
-                        <li>Troubleshooting connections</li>
+                        <li>Windows + K shortcut</li>
+                        <li>HDMI/VGA cable connection</li>
+                        <li>Troubleshooting tips</li>
                     </ul>
                 </div>
-                
-                <div class="feature-card" onclick="showPage('camera', this)">
-                    <h3>📷 Camera Guide</h3>
-                    <p style="margin-bottom: 1rem; color: var(--text-muted);">Set up the Kandao Meeting Pro camera.</p>
+
+                <div class="bento-card" onclick="showPage('camera')">
+                    <div class="bento-icon">📷</div>
+                    <h3>Camera Guide</h3>
+                    <p>Set up the Kandao Meeting Pro camera for video calls.</p>
+                    <div style="margin-bottom: var(--space-md);">
+                        <span class="feature-tag">4K</span>
+                        <span class="feature-tag pink">360°</span>
+                    </div>
                     <ul>
-                        <li>Connection to a laptop</li>
-                        <li>Connection to the projector</li>
+                        <li>Laptop connection</li>
+                        <li>Projector integration</li>
                         <li>System topology</li>
                     </ul>
                 </div>
-                <div class="feature-card" onclick="showPage('remote', this)">
-                    <h3>🎛️ Remote & Features</h3>
-                    <p style="margin-bottom: 1rem; color: var(--text-muted);">Use of the remote and its features.</p>
+
+                <div class="bento-card" onclick="showPage('remote')">
+                    <div class="bento-icon">🎛️</div>
+                    <h3>Remote & Features</h3>
+                    <p>Master the remote control and camera features.</p>
+                    <div style="margin-bottom: var(--space-md);">
+                        <span class="feature-tag">Smart</span>
+                        <span class="feature-tag cyan">AI</span>
+                    </div>
                     <ul>
-                        <li>Remote button functions</li>
+                        <li>Button functions</li>
                         <li>360° Audio & 4K Video</li>
                         <li>Smart tracking</li>
                     </ul>
                 </div>
-                <div class="feature-card" onclick="showPage('faq', this)">
-                    <h3>❓ FAQ & Troubleshooting</h3>
-                    <p style="margin-bottom: 1rem; color: var(--text-muted);">Solusi untuk masalah umum.</p>
+
+                <div class="bento-card" onclick="showPage('faq')">
+                    <div class="bento-icon">❓</div>
+                    <h3>FAQ & Support</h3>
+                    <p>Solutions for common issues and how to get help.</p>
+                    <div style="margin-bottom: var(--space-md);">
+                        <span class="feature-tag">Help</span>
+                        <span class="feature-tag pink">24/7</span>
+                    </div>
+                    <ul>
+                        <li>Common problems</li>
+                        <li>Quick fixes</li>
+                        <li>Contact support</li>
+                    </ul>
                 </div>
             </div>
-            <div class="alert alert-success" style="margin-top: 2rem;">
+
+            <div class="alert alert-success">
                 <span class="alert-icon">💡</span>
-                <div>
-                    <strong>Tips:</strong> Use the search feature in the header or shortcut <strong>Ctrl + K</strong> to find a quick solution!
+                <div class="alert-content">
+                    <strong>Pro Tip</strong>
+                    Use the search feature or press <strong>Ctrl/⌘ + K</strong> to quickly find solutions!
                 </div>
             </div>
         </div>
@@ -684,35 +1411,48 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-icon">📺</div>
-                    <h2 class="card-title">Guide to Connecting a Projector</h2>
-                </div>
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>A. Using Keyboard Shortcuts (Wireless)</span><span class="accordion-icon">▼</span>
+                    <div>
+                        <h2 class="card-title">Projector Connection Guide</h2>
+                        <p style="color: var(--text-secondary); margin-top: var(--space-xs);">Two methods: Wireless & Wired</p>
                     </div>
+                </div>
+
+                <div class="accordion">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>🛜 A. Using Keyboard Shortcuts (Wireless)</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
                     <div class="accordion-content">
                         <div class="accordion-body">
-                            <p>This method is the fastest way to connect wirelessly.</p>
+                            <div class="alert alert-info" style="margin-bottom: var(--space-lg);">
+                                <span class="alert-icon">⚡</span>
+                                <div class="alert-content">
+                                    This is the fastest method for wireless connection!
+                                </div>
+                            </div>
                             <div class="steps">
                                 <div class="step">
-                                    <h4>Press the Windows key + K</h4>
-                                    <p>On your keyboard, press the <strong>Windows + K</strong> to open the 'Connect' panel.</p>
+                                    <h4>Press Windows + K</h4>
+                                    <p>On your keyboard, press <strong>Windows + K</strong> to open the 'Connect' panel.</p>
                                 </div>
                                 <div class="step">
                                     <h4>Select Projector</h4>
-                                    <p>Select the name of the meeting room projector from the list that appears.</p>
+                                    <p>Choose the meeting room projector from the list that appears.</p>
                                     <div class="image-container">
-                                        <img src="assets/windows_k_shortcut.png" alt="Panel Connect Windows" class="guide-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/?text=windows_k_shortcut.png'">
+                                        <img src="assets/windows_k_shortcut.png" alt="Windows Connect Panel" class="guide-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1a1a1a/F4A300?text=Windows+K+Shortcut'">
+                                        <p class="image-caption">Windows Connect Panel showing available devices</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>B. Using an HDMI/VGA Cable</span><span class="accordion-icon">▼</span>
-                    </div>
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>🔌 B. Using HDMI/VGA Cable</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
                     <div class="accordion-content">
                         <div class="accordion-body">
                             <div class="steps">
@@ -720,35 +1460,41 @@
                                     <h4>Connect the Cable</h4>
                                     <div class="content-grid">
                                         <div>
-                                            <p>Connect the HDMI/VGA cable from the laptop to the corresponding port on the projector.</p>
+                                            <p>Connect the HDMI/VGA cable from your laptop to the corresponding port on the projector.</p>
+                                            <div style="margin-top: var(--space-md);">
+                                                <span class="feature-tag">HDMI</span>
+                                                <span class="feature-tag cyan">VGA</span>
+                                            </div>
                                         </div>
-                                        <img src="assets/colokan_hdmi.png" alt="Port HDMI" class="guide-image" onerror="this.onerror=null;this.src='https://placehold.co/400x300/?text=colokan_hdmi.png'">
+                                        <img src="assets/colokan_hdmi.png" alt="HDMI Port" class="guide-image" onerror="this.onerror=null;this.src='https://placehold.co/400x300/1a1a1a/F4A300?text=HDMI+Port'">
                                     </div>
                                 </div>
                                 <div class="step">
                                     <h4>Select Input Source</h4>
                                     <div class="content-grid">
-                                       <div>
-                                            <p>Use the projector remote to select the input source (HDMI/VGA). If the screen does not appear, press <strong>Windows + P</strong> and select 'Duplicate'.</p>
-                                       </div>
-                                       <img src="assets/home_screen_hdmi.png" alt="Pilih Input HDMI" class="guide-image" onerror="this.onerror=null;this.src='https://placehold.co/400x300/?text=home_screen_hdmi.png'">
+                                        <div>
+                                            <p>Use the projector remote to select the input source (HDMI/VGA). If the screen doesn't appear, press <strong>Windows + P</strong> and select 'Duplicate'.</p>
+                                        </div>
+                                        <img src="assets/home_screen_hdmi.png" alt="Select HDMI Input" class="guide-image" onerror="this.onerror=null;this.src='https://placehold.co/400x300/1a1a1a/F4A300?text=Select+Input'">
                                     </div>
                                 </div>
                                 <div class="step">
-                                    <h4>Connection Verification</h4>
-                                    <p>Your laptop display will appear on the projector screen.</p>
+                                    <h4>Verify Connection</h4>
+                                    <p>Your laptop display should now appear on the projector screen.</p>
                                     <div class="image-container">
-                                        <img src="assets/Picture11.png" alt="Tampilan proyektor berhasil" class="guide-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/?text=Picture11.png'">
+                                        <img src="assets/Picture11.png" alt="Successful Connection" class="guide-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1a1a1a/F4A300?text=Connection+Success'">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                 <div class="alert alert-warning" style="margin-top:2rem; display:flex; align-items:center; gap: 1rem;">
-                    <img src="assets/Picture12.png" alt="Tombol power off remote" style="max-width:150px; border-radius:8px;" onerror="this.onerror=null;this.src='https://placehold.co/150x100/?text=Picture12.png'">
-                    <div>
-                        <strong>Important:</strong> Don't forget to turn off the projector after use to save energy!
+
+                <div class="alert alert-warning" style="margin-top: var(--space-xl);">
+                    <span class="alert-icon">⚠️</span>
+                    <div class="alert-content">
+                        <strong>Important Reminder</strong>
+                        Don't forget to turn off the projector after use to save energy and extend its lifespan!
                     </div>
                 </div>
             </div>
@@ -759,62 +1505,72 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-icon">📷</div>
-                    <h2 class="card-title">Kandao Meeting Pro Camera Guide</h2>
-                </div>
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>A. Connecting to a Laptop (Webcam Mode)</span><span class="accordion-icon">▼</span>
+                    <div>
+                        <h2 class="card-title">Kandao Meeting Pro Camera</h2>
+                        <p style="color: var(--text-secondary); margin-top: var(--space-xs);">360° AI-powered conference camera</p>
                     </div>
+                </div>
+
+                <div class="accordion">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>💻 A. Connecting to Laptop (Webcam Mode)</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
                     <div class="accordion-content">
                         <div class="accordion-body">
                             <div class="steps">
                                 <div class="step">
-                                    <h4>Turn on & Connect the Camera</h4>
-                                    <p>Press the power button, then connect the USB cable from the camera's ‘USB OUT’ port to your laptop.</p>
-                                    <div class="content-grid">
-                                        <img src="assets/kandao_power_button.png" alt="Kandao Power Button" class="guide-image" onerror="this.onerror=null;this.src=‘https://placehold.co/400x300/?text=kandao_power_button.png’">
-                                        <img src="assets/Picture15.png" alt="USB connection to laptop" class="guide-image" onerror="this.onerror=null;this.src=‘https://placehold.co/400x300/?text=Picture15.png’">
+                                    <h4>Power On & Connect</h4>
+                                    <p>Press the power button, then connect the USB cable from the camera's 'USB OUT' port to your laptop.</p>
+                                    <div class="content-grid" style="margin-top: var(--space-md);">
+                                        <img src="assets/kandao_power_button.png" alt="Kandao Power Button" class="guide-image" onerror="this.onerror=null;this.src='https://placehold.co/400x300/1a1a1a/F4A300?text=Power+Button'">
+                                        <img src="assets/Picture15.png" alt="USB Connection" class="guide-image" onerror="this.onerror=null;this.src='https://placehold.co/400x300/1a1a1a/F4A300?text=USB+Connection'">
                                     </div>
                                 </div>
                                 <div class="step">
-                                    <h4>Select Camera in Application</h4>
-                                    <p>Open the meeting application (Zoom/Teams), go to Video settings, and select <strong>Kandao Meeting Pro</strong>.</p>
+                                    <h4>Select Camera in App</h4>
+                                    <p>Open your meeting app (Zoom/Teams), go to Video settings, and select <strong>Kandao Meeting Pro</strong>.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>B. Connection to Projector (Standalone Mode)</span><span class="accordion-icon">▼</span>
-                    </div>
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>📺 B. Connecting to Projector (Standalone)</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
                     <div class="accordion-content">
                         <div class="accordion-body">
-                             <div class="steps">
-                                 <div class="step">
-                                     <h4>Connect HDMI & Turn on</h4>
-                                     <p>Connect the HDMI cable from the camera to the projector, then turn on both devices.</p>
-                                     <div class="image-container">
-                                         <img src="assets/Picture13.png" alt="Koneksi HDMI Kamera ke Proyektor" class="guide-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/?text=Picture13.png'">
-                                     </div>
-                                 </div>
-                                 <div class="step">
-                                     <h4>Connect to WiFi</h4>
-                                     <p>Use the remote to access the settings and connect the camera to the WiFi network.</p>
-                                 </div>
-                             </div>
+                            <div class="steps">
+                                <div class="step">
+                                    <h4>Connect HDMI & Power On</h4>
+                                    <p>Connect the HDMI cable from the camera to the projector, then turn on both devices.</p>
+                                    <div class="image-container">
+                                        <img src="assets/Picture13.png" alt="HDMI Connection" class="guide-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1a1a1a/F4A300?text=HDMI+to+Projector'">
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <h4>Connect to WiFi</h4>
+                                    <p>Use the remote to access settings and connect the camera to the WiFi network.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                 <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>C. System Topology Diagram</span><span class="accordion-icon">▼</span>
-                    </div>
+
+                <div class="accordion">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>🔗 C. System Topology Diagram</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
                     <div class="accordion-content">
                         <div class="accordion-body">
-                           <p>This diagram shows the complete connection flow of the Kandao Meeting Pro device.</p>
-                           <div class="image-container">
-                                <img src="assets/Picture14.png" alt="Diagram Topologi Sistem Kandao" class="guide-image" onerror="this.onerror=null;this.src='https://placehold.co/800x450/?text=Picture14.png'">
+                            <p style="margin-bottom: var(--space-md);">This diagram shows the complete connection flow of the Kandao Meeting Pro device.</p>
+                            <div class="image-container">
+                                <img src="assets/Picture14.png" alt="System Topology" class="guide-image" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1a1a1a/F4A300?text=System+Topology'">
+                                <p class="image-caption">Kandao Meeting Pro system topology</p>
                             </div>
                         </div>
                     </div>
@@ -822,108 +1578,144 @@
             </div>
         </div>
 
-        <!-- Halaman Remote -->
+        <!-- Remote Page -->
         <div id="remote" class="page">
             <div class="card">
                 <div class="card-header">
                     <div class="card-icon">🎛️</div>
-                    <h2 class="card-title">Remote Control & Key Features</h2>
-                </div>
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Remote Button Functions</span><span class="accordion-icon">▼</span>
+                    <div>
+                        <h2 class="card-title">Remote Control & Features</h2>
+                        <p style="color: var(--text-secondary); margin-top: var(--space-xs);">Master your Kandao camera</p>
                     </div>
+                </div>
+
+                <div class="accordion">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>🎮 Remote Button Functions</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
                     <div class="accordion-content">
                         <div class="accordion-body">
                             <div class="content-grid">
                                 <div>
-                                    <p><strong>Main Buttons:</strong></p>
-                                    <ul>
-                                        <li><strong>Power:</strong> Turns the camera on/off. </li>
-                                        <li><strong>Mouse Mode:</strong> Activates the cursor on the screen. </li>
-                                        <li><strong>Volume +/-:</strong> Adjusts the speaker volume. </li>
-                                        <li><strong>Mute:</strong> Turns the microphone on/off. </li>
-                                        <li><strong>D-Pad & OK:</strong> For navigation and confirmation. </li>
+                                    <h4 style="margin-bottom: var(--space-md); font-family: var(--font-display);">Main Buttons:</h4>
+                                    <ul style="list-style: none;">
+                                        <li style="padding: var(--space-sm) 0; display: flex; align-items: center; gap: var(--space-sm);">
+                                            <span class="feature-tag">Power</span> Turns the camera on/off
+                                        </li>
+                                        <li style="padding: var(--space-sm) 0; display: flex; align-items: center; gap: var(--space-sm);">
+                                            <span class="feature-tag cyan">Mouse</span> Activates screen cursor
+                                        </li>
+                                        <li style="padding: var(--space-sm) 0; display: flex; align-items: center; gap: var(--space-sm);">
+                                            <span class="feature-tag purple">Vol +/-</span> Adjusts speaker volume
+                                        </li>
+                                        <li style="padding: var(--space-sm) 0; display: flex; align-items: center; gap: var(--space-sm);">
+                                            <span class="feature-tag pink">Mute</span> Toggles microphone
+                                        </li>
+                                        <li style="padding: var(--space-sm) 0; display: flex; align-items: center; gap: var(--space-sm);">
+                                            <span class="feature-tag">D-Pad</span> Navigation & confirmation
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="image-container">
-                                    <img src="assets/kandao_remote_buttons.png" alt="Tombol remote Kandao" class="guide-image" onerror="this.onerror=null;this.src='https://placehold.co/300x400/?text=kandao_remote_buttons.png'">
+                                    <img src="assets/kandao_remote_buttons.png" alt="Remote Buttons" class="guide-image" onerror="this.onerror=null;this.src='https://placehold.co/300x400/1a1a1a/F4A300?text=Remote+Control'">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                 <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Camera Highlights</span><span class="accordion-icon">▼</span>
-                    </div>
+
+                <div class="accordion">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>✨ Camera Highlights</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
                     <div class="accordion-content">
                         <div class="accordion-body">
-                            <p>Kandao cameras are equipped with various smart features to enhance your meeting experience.</p>
-                             <div class="image-container">
-                                <img src="assets/kandao_features_summary.png.png" alt="Fitur unggulan Kandao" class="guide-image" onerror="this.onerror=null;this.src='https://placehold.co/800x450/?text=kandao_features_summary.png.png'">
+                            <p style="margin-bottom: var(--space-lg);">Kandao cameras feature smart technology for enhanced meetings.</p>
+                            <div style="margin-bottom: var(--space-lg);">
+                                <span class="feature-tag">4K UHD</span>
+                                <span class="feature-tag cyan">360° View</span>
+                                <span class="feature-tag purple">AI Tracking</span>
+                                <span class="feature-tag pink">8 Mics</span>
+                            </div>
+                            <div class="image-container">
+                                <img src="assets/kandao_features_summary.png" alt="Kandao Features" class="guide-image" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1a1a1a/F4A300?text=Kandao+Features'">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <!-- Halaman FAQ -->
+
+        <!-- FAQ Page -->
         <div id="faq" class="page">
             <div class="card">
-                 <div class="card-header">
+                <div class="card-header">
                     <div class="card-icon">❓</div>
-                    <h2 class="card-title">FAQ & Troubleshooting</h2>
-                </div>
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Projector not displaying images?</span><span class="accordion-icon">▼</span>
+                    <div>
+                        <h2 class="card-title">FAQ & Troubleshooting</h2>
+                        <p style="color: var(--text-secondary); margin-top: var(--space-xs);">Quick solutions to common problems</p>
                     </div>
+                </div>
+
+                <div class="accordion">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>📺 Projector not displaying image?</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
                     <div class="accordion-content">
                         <div class="accordion-body">
-                           <p>Ensure the cable is securely connected, the input source on the projector is correct, and try pressing <strong>Windows + P</strong> then select ‘Duplicate’.</p>
+                            <p>Ensure the cable is securely connected, the input source on the projector is correct, and try pressing <strong>Windows + P</strong> then select 'Duplicate'.</p>
                         </div>
                     </div>
                 </div>
+
                 <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Camera not detected in Zoom/Teams?</span><span class="accordion-icon">▼</span>
-                    </div>
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>📷 Camera not detected in Zoom/Teams?</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
                     <div class="accordion-content">
                         <div class="accordion-body">
-                           <p>Change the USB port, make sure you select “Kandao Meeting Pro” in the app's audio & video settings, and ensure that no other apps are using the camera.</p>
+                            <p>Try a different USB port, ensure "Kandao Meeting Pro" is selected in audio & video settings, and check that no other apps are using the camera.</p>
                         </div>
                     </div>
                 </div>
-                 <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Remote tidak berfungsi?</span><span class="accordion-icon">▼</span>
-                    </div>
+
+                <div class="accordion">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>🎛️ Remote not working?</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
                     <div class="accordion-content">
                         <div class="accordion-body">
-                           <p>Penyebab paling umum adalah baterai habis. Coba ganti baterai terlebih dahulu. Pastikan juga tidak ada penghalang antara remote dan kamera.</p>
+                            <p>The most common cause is dead batteries. Try replacing them first. Also ensure there are no obstacles between the remote and camera.</p>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="card">
-                <h3 style="color: var(--text-dark); margin-bottom: 1.5rem;">📞 Kontak Bantuan</h3>
+                <h3 style="font-family: var(--font-display); font-size: 1.25rem; margin-bottom: var(--space-lg); display: flex; align-items: center; gap: var(--space-sm);">
+                    📞 Contact Support
+                    <span class="feature-tag pink">24/7</span>
+                </h3>
                 <div class="contact-grid">
                     <div class="contact-card">
                         <div class="contact-icon">🏢</div>
                         <h4>Facility Maintenance</h4>
-                        <p style="color: var(--text-muted); margin: 0.5rem 0;">Masalah hardware: proyektor, kabel, remote, layar.</p>
+                        <p>Hardware issues: projector, cables, remote, screen.</p>
                     </div>
                     <div class="contact-card">
                         <div class="contact-icon">💻</div>
-                        <h4>Facility IT</h4>
-                        <p style="color: var(--text-muted); margin: 0.5rem 0;">Masalah software: driver, aplikasi meeting, jaringan/WiFi.</p>
+                        <h4>IT Support</h4>
+                        <p>Software issues: drivers, meeting apps, WiFi network.</p>
                     </div>
                     <div class="contact-card">
                         <div class="contact-icon">📱</div>
                         <h4>Helpdesk</h4>
-                        <p style="color: var(--text-muted); margin: 0.5rem 0;">Untuk semua kendala darurat dan pelaporan tiket.</p>
+                        <p>Emergency support and ticket reporting.</p>
                     </div>
                 </div>
             </div>
@@ -931,75 +1723,185 @@
     </main>
 
     <footer class="footer">
-        <p><strong>© 2025 Trakindo</strong> - Projector & Conference Camera User Guide</p>
-        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Last updated: Oktober 2025 | Versi 2.0</p>
+        <div class="footer-content">
+            <p class="footer-brand">© 2025 Trakindo</p>
+            <p>Projector & Conference Camera User Guide</p>
+            <p style="margin-top: var(--space-sm); font-size: 0.8rem;">
+                Last updated: October 2025 • Version 3.0
+            </p>
+            <div class="footer-links">
+                <a href="#" class="footer-link">📖 Full Documentation</a>
+                <a href="#" class="footer-link">💬 Contact Support</a>
+                <a href="#" class="footer-link">📥 Download PDF</a>
+            </div>
+        </div>
     </footer>
 
     <script>
+        // ============================================
+        // 🎯 JAVASCRIPT - Enhanced Interactions
+        // ============================================
+
         let activeTab = 'home';
         const searchInput = document.getElementById('searchInput');
+        const cursorGlow = document.getElementById('cursorGlow');
 
+        // Cursor Glow Effect (Gen Z Love This!)
+        document.addEventListener('mousemove', (e) => {
+            if (window.innerWidth > 768) {
+                cursorGlow.style.left = e.clientX + 'px';
+                cursorGlow.style.top = e.clientY + 'px';
+            }
+        });
+
+        // Page Navigation
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
+            
             document.querySelectorAll('.nav-tab').forEach(t => {
                 t.classList.remove('active');
-                if(t.getAttribute('onclick').includes(`'${pageId}'`)) t.classList.add('active');
+                t.setAttribute('aria-selected', 'false');
+                if (t.getAttribute('onclick').includes(`'${pageId}'`)) {
+                    t.classList.add('active');
+                    t.setAttribute('aria-selected', 'true');
+                }
             });
+            
             window.scrollTo({ top: 0, behavior: 'smooth' });
             activeTab = pageId;
+            
+            // Close all accordions when switching pages
+            document.querySelectorAll('.accordion-header').forEach(h => h.classList.remove('active'));
         }
 
+        // Accordion Toggle
         function toggleAccordion(header) {
             const parentCard = header.closest('.card');
             if (parentCard) {
-                 parentCard.querySelectorAll('.accordion-header').forEach(h => {
+                parentCard.querySelectorAll('.accordion-header').forEach(h => {
                     if (h !== header) h.classList.remove('active');
                 });
             }
             header.classList.toggle('active');
         }
 
+        // Theme Toggle
         function toggleTheme() {
             const html = document.documentElement;
-            const newTheme = (html.getAttribute('data-theme') || 'light') === 'dark' ? 'light' : 'dark';
+            const currentTheme = html.getAttribute('data-theme') || 'light';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
             html.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
-            document.querySelector('.theme-toggle').textContent = newTheme === 'dark' ? '☀️' : '🌙';
+            
+            const themeIcon = document.getElementById('themeIcon');
+            themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+            
+            // Add rotation animation
+            themeIcon.style.transform = 'rotate(360deg)';
+            setTimeout(() => {
+                themeIcon.style.transform = 'rotate(0deg)';
+            }, 300);
         }
 
+        // Initialize Theme
         document.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme') || 'light';
             document.documentElement.setAttribute('data-theme', savedTheme);
-            document.querySelector('.theme-toggle').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+            document.getElementById('themeIcon').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
         });
 
+        // Search Functionality
         searchInput.addEventListener('input', (e) => {
             const searchTerm = e.target.value.toLowerCase().trim();
             const faqPage = document.getElementById('faq');
             
             if (searchTerm === '') {
-                 faqPage.querySelectorAll('.accordion').forEach(acc => acc.style.display = 'block');
-                 if (activeTab !== 'faq') showPage(activeTab);
-                 return;
+                faqPage.querySelectorAll('.accordion').forEach(acc => {
+                    acc.style.display = 'block';
+                    acc.style.opacity = '1';
+                });
+                if (activeTab !== 'faq') showPage(activeTab);
+                return;
             }
 
             let found = false;
             faqPage.querySelectorAll('.accordion').forEach(accordion => {
                 const isVisible = accordion.textContent.toLowerCase().includes(searchTerm);
                 accordion.style.display = isVisible ? 'block' : 'none';
+                accordion.style.opacity = isVisible ? '1' : '0';
                 if (isVisible) found = true;
             });
 
             if (found && activeTab !== 'faq') showPage('faq');
         });
 
+        // Keyboard Shortcuts
         document.addEventListener('keydown', (e) => {
+            // Ctrl/Cmd + K for search
             if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
                 e.preventDefault();
                 searchInput.focus();
             }
+            
+            // Escape to clear search
+            if (e.key === 'Escape' && document.activeElement === searchInput) {
+                searchInput.value = '';
+                searchInput.blur();
+                document.getElementById('faq').querySelectorAll('.accordion').forEach(acc => {
+                    acc.style.display = 'block';
+                });
+            }
         });
+
+        // Add ripple effect to buttons (Gen Z Touch)
+        document.querySelectorAll('.nav-tab, .bento-card, .contact-card').forEach(el => {
+            el.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const ripple = document.createElement('span');
+                ripple.style.cssText = `
+                    position: absolute;
+                    background: rgba(244, 163, 0, 0.3);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s ease-out;
+                    pointer-events: none;
+                    left: ${x}px;
+                    top: ${y}px;
+                    width: 100px;
+                    height: 100px;
+                    margin-left: -50px;
+                    margin-top: -50px;
+                `;
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Add ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Console Easter Egg (Gen Z Devs Love This)
+        console.log('%c🔧 Trakindo User Guide v3.0', 'font-size: 24px; font-weight: bold; color: #F4A300;');
+        console.log('%cBuilt with 💛 using Gen Z + 2026 Design Trends', 'font-size: 12px; color: #888;');
+        console.log('%cNeo-Brutalism • Glassmorphism • Bento Grid', 'font-size: 10px; color: #666;');
     </script>
 </body>
 </html>
